@@ -9,7 +9,6 @@ const allGoals = JSON.parse(localStorage.getItem("allGoals")) || {};
 
 function checkInput() {
   const status = [...inputBox].every((input) => {
-    //console.log(input.value);
     return input.value;
   });
   return status;
@@ -34,10 +33,6 @@ function setState(goalObject, key) {
   localStorage.setItem("allGoals", JSON.stringify(allGoals));
 }
 
-function checkState(goalObject, key) {
-  if ((goalObject[key].state = true)) return;
-}
-
 allCheckBox.forEach((checkBox) => {
   checkBox.addEventListener("click", () => {
     if (checkInput()) {
@@ -57,8 +52,6 @@ inputBox.forEach((input) => {
     displayErrorMsg(0);
   });
 
-  //  console.log(allGoals);
-
   if (allGoals[input.id]) {
     input.value = allGoals[input.id].data;
     if (allGoals[input.id].state) {
@@ -74,7 +67,6 @@ inputBox.forEach((input) => {
       state: "",
       data: input.value,
     };
-    // console.log(input.parentElement.classList);
     localStorage.setItem("allGoals", JSON.stringify(allGoals));
   });
 });
