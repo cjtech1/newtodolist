@@ -71,9 +71,11 @@ inputBox.forEach((input) => {
   }
 
   input.addEventListener("input", (e) => {
-    if (allGoals[input.id].state) {
-      e.target.value = allGoals[input.id].data;
-      return;
+    if (allGoals[input.id]) {
+      if (allGoals[input.id].state) {
+        e.target.value = allGoals[input.id].data;
+        return;
+      }
     }
     allGoals[input.id] = {
       state: "",
